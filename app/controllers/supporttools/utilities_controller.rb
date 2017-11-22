@@ -1,7 +1,7 @@
-#require_dependency "supporttools/application_controller" <-- use application's applicationController
+require_dependency "supporttools/application_controller" 
 
-
-class Supporttools::UtilitiesController < ApplicationController
+module Supporttools
+  class UtilitiesController < ApplicationController
     before_action :verify_admin_user
     
     def log
@@ -9,4 +9,5 @@ class Supporttools::UtilitiesController < ApplicationController
       path = "#{Rails.root}/log/development.log" if Rails.env.development?
       render file: path, layout: false, content_type: 'text/plain'
     end 
+  end
 end
